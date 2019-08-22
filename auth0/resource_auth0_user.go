@@ -39,8 +39,8 @@ func newUser() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
-			"nickname": {
-				Type:     schema.TypeString,
+			"whatever": {
+				Type:     schema.TypeBool,
 				Optional: true,
 			},
 			"password": {
@@ -87,7 +87,7 @@ func readUser(d *schema.ResourceData, m interface{}) error {
 
 	d.Set("user_id", u.ID)
 	d.Set("username", u.Username)
-	d.Set("nickname", u.Nickname)
+	d.Set("whatever", u.Whatever)
 	d.Set("phone_number", u.PhoneNumber)
 	d.Set("email_verified", u.EmailVerified)
 	d.Set("phone_verified", u.PhoneVerified)
@@ -134,7 +134,7 @@ func buildUser(d *schema.ResourceData) *management.User {
 		ID:            String(d, "user_id"),
 		Connection:    String(d, "connection_name"),
 		Username:      String(d, "username"),
-		Nickname:      String(d, "nickname"),
+		Whatever:      String(d, "whatever"),
 		PhoneNumber:   String(d, "phone_number"),
 		EmailVerified: Bool(d, "email_verified"),
 		VerifyEmail:   Bool(d, "verify_email"),
